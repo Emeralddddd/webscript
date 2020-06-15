@@ -8,7 +8,7 @@
 // @grant        none
 // @require      http://libs.baidu.com/jquery/1.7.2/jquery.min.js
 // ==/UserScript==
-
+var $ = window.jQuery;
 function auto() {
     var j = 0;
     var timer = window.setInterval(function () {
@@ -16,6 +16,7 @@ function auto() {
             window.clearInterval(timer);
         }
         $("table.gridtable a")[j].click();
+        console.log(j);
         window.setTimeout(function () {
             for (var i = 0, len = 6; i < len; i++) {
                 $("input:radio[value=4]")[i].click();
@@ -27,16 +28,16 @@ function auto() {
                 return true;
             };
             $("input#btnSave")[0].click();
-        }, 2000);
+        }, 5000);
         j++;
-    }, 2000)
+    }, 10000)
 }
 
 (function () {
     var x = document.createElement("button")
     x.innerHTML = '自动评教'
     x.id = 'autoeva'
-    document.getElementById('tool_bar').appendChild(x)
+    document.documentElement.appendChild(x)
     // Your code here...
     x.addEventListener("click", auto)
 })();
